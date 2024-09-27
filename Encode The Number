@@ -1,0 +1,17 @@
+def encode_number(N):
+   
+    N_str = str(N)
+    
+  
+    encoded_str = ''.join(str(int(digit) ** 2) for digit in N_str)
+    
+ 
+    return int(encoded_str)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    N = int(sys.stdin.readline().strip())  
+    result = encode_number(N)
+    print(result)
