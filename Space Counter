@@ -1,0 +1,9 @@
+def count_spaces(s):
+    # Count the number of spaces in the string
+    return s.count(' ')
+
+# Example usage
+if __name__ == "__main__":
+    input_string = input().strip()  # Read input from the user
+    result = count_spaces(input_string)
+    print(result)
