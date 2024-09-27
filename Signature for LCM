@@ -1,0 +1,19 @@
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    return abs(a * b) // gcd(a, b)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    a, b = map(int, sys.stdin.readline().strip().split())  
+    
+    result_gcd = gcd(a, b)
+    result_lcm = lcm(a, b)
+    
+    print(result_gcd)
+    print(result_lcm)
