@@ -1,0 +1,20 @@
+def missing_characters_to_pangram(input_string):
+   
+    all_letters = set('abcdefghijklmnopqrstuvwxyz')
+    
+    
+    input_letters = set(input_string.lower())
+    
+  
+    missing_letters = sorted(all_letters - input_letters)
+    
+   
+    return ''.join(missing_letters)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    input_string = sys.stdin.readline().strip()
+    result = missing_characters_to_pangram(input_string)
+    print(result)
