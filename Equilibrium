@@ -1,0 +1,24 @@
+def find_equilibrium_index(N, A):
+    total_sum = sum(A)
+    left_sum = 0
+    
+    for i in range(N):
+       
+        right_sum = total_sum - left_sum - A[i]
+        
+        if left_sum == right_sum:
+            return i + 1
+        
+        left_sum += A[i]
+    
+    return "NOT FOUND"
+
+
+if __name__ == "__main__":
+    import sys
+    
+    N = int(sys.stdin.readline().strip()) 
+    A = list(map(int, sys.stdin.readline().strip().split()))  
+    
+    result = find_equilibrium_index(N, A)
+    print(result)
