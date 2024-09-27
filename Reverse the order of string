@@ -1,0 +1,17 @@
+def reverse_words(input_string):
+   
+    words = input_string.split()
+    
+   
+    reversed_words = words[::-1]
+    
+ 
+    return ' '.join(reversed_words)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    input_string = sys.stdin.readline().strip() 
+    result = reverse_words(input_string)
+    print(result)
