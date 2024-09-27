@@ -1,0 +1,21 @@
+def min_key_presses(s: str) -> int:
+    target = int(s)
+    presses = 0
+    
+    while target > 0:
+        if target % 100 == 0:
+            target //= 100
+            presses += 1  # Press "00"
+        elif target % 10 == 0:
+            target //= 10
+            presses += 1  # Press the last digit (0)
+        else:
+            presses += 1  # We will need to press the last digit
+            target -= target % 10  # Remove the last digit
+
+    return presses
+
+# Sample Input
+s = "100"
+# Sample Output
+print(min_key_presses(s)) 
