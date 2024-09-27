@@ -1,0 +1,38 @@
+def maximize_grade(s: str, P: int, K: int) -> str:
+    # Convert to 0-based index
+    P -= 1
+    n = len(s)
+
+    # Define the range to check for the smallest character
+    left = max(0, P - K)
+    right = min(n - 1, P + K)
+
+    # Find the smallest character in the allowed range
+    min_char = min(s[left:right + 1])
+    min_char_index = s.index(min_char, left, right + 1)
+
+    # Calculate the number of swaps needed to bring it to position P
+    swaps_needed = min_char_index - P
+
+    # If we can afford the swaps
+    if swaps_needed <= K:
+        # Create a new list to manipulate the string
+        result = list(s)
+        # Move the smallest character to the P-th position
+        # Shift characters to the right
+        for i in range(min_char_index, P, -1):
+            result[i] = result[i - 1]
+        result[P] = min_char
+
+        # Convert back to string and return
+        return ''.join(result)
+    
+    # If we can't swap it to the position
+    return s
+
+# Sample Input
+s = "abcdefg"
+P = 3
+K = 2
+# Sample Output
+print(maximize_grade(s, P, K))  # Output: a
