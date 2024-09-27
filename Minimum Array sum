@@ -1,0 +1,28 @@
+def min_sum_after_operations(N, A):
+    # Find the maximum element in the array
+    max_element = max(A)
+
+    # Calculate the average using the maximum element
+    # To maximize the number of zeros, use the average with the smallest number
+    # or simply use the max_element itself, because:
+    # average = (max_element + x) / 2 where x is another element
+    # the average won't exceed the max_element.
+    average = max_element
+
+    # Update the array
+    for i in range(N):
+        if A[i] < average:
+            A[i] = 0
+
+    # Calculate the minimum possible sum
+    return sum(A)
+
+# Example usage
+if __name__ == "__main__":
+    import sys
+    
+    N = int(sys.stdin.readline().strip())  # Read the size of the array
+    A = list(map(int, sys.stdin.readline().strip().split()))  # Read the array
+    
+    result = min_sum_after_operations(N, A)
+    print(result)
