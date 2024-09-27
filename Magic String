@@ -1,0 +1,21 @@
+from collections import Counter
+
+def min_steps_to_magic_string(S):
+    if not S: 
+        return 0
+    
+
+    frequency = Counter(S)
+    
+  
+    max_freq = max(frequency.values())
+    
+    return len(S) - max_freq
+
+
+if __name__ == "__main__":
+    import sys
+    
+    S = sys.stdin.readline().strip()  
+    result = min_steps_to_magic_string(S)
+    print(result)
