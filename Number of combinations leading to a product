@@ -1,0 +1,45 @@
+def count_unique_triplets(arr, m):
+    arr.sort() 
+    unique_triplets = set()
+    n = len(arr)
+
+    for i in range(n):
+        
+        if i > 0 and arr[i] == arr[i - 1]:
+            continue
+
+       
+        target = m / arr[i]
+        left, right = i + 1, n - 1
+
+        while left < right:
+            product = arr[left] * arr[right]
+            if product < target:
+                left += 1
+            elif product > target:
+                right -= 1
+            else:
+               
+                unique_triplet = (arr[i], arr[left], arr[right])
+                unique_triplets.add(unique_triplet)
+
+               
+                left += 1
+                right -= 1
+                while left < right and arr[left] == arr[left - 1]:
+                    left += 1
+                while left < right and arr[right] == arr[right + 1]:
+                    right -= 1
+
+    return len(unique_triplets)
+
+
+if __name__ == "__main__":
+    import sys
+    
+    n = int(sys.stdin.readline().strip()) 
+    arr = list(map(int, sys.stdin.readline().strip().split()))  
+    m = int(sys.stdin.readline().strip())  
+    
+    result = count_unique_triplets(arr, m)
+    print(result)
